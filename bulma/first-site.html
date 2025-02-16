@@ -3,22 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.3/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <title>Okey dokey, artichokey!</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@1.0.3/css/bulma.min.css">
+    <script src="
+    https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7/js/all.min.js
+    "></script>
+    <link href="
+    https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7/css/fontawesome.min.css
+    " rel="stylesheet">
     <style>
-        .section {
-            background-color: azure;
+        .title {
+            color: azure;
         }
-        .item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        header {
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 1em;
+        }
+        nav {
+            background-color: lightblue;
+            color: white;
+            padding: 1em;
+        }
+        body {
+            background-color: pink;
+        }
+        footer {
+            background-color: plum;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+        .list {
+            list-style-type: none;
+            padding: 0;
+            background-color: lightcyan;
+            color:saddlebrown
+        }
+        section {
+            text-align: center;
+            padding: 1em;
+
         }
     </style>
 </head>
-<body>
-
+<header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="container">
         <div class="navbar-brand">
@@ -30,7 +60,7 @@
       
           </a>
       
-          <a :class="{ 'is-active': isOpen}" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" @click="toggleMenu">
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -38,15 +68,15 @@
           </a>
         </div>
       
-        <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isOpen}">
+        <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item">
-                <i class="fas fa-home"></i>
+                <i class="fa-solid fa-house"></i>
               Home
             </a>
       
             <a class="navbar-item">
-                <i class="fas fa-passport"></i>
+             <i class="fa-solid fa-file"></i>
               Documentation
             </a>
       
@@ -86,106 +116,92 @@
             </div>
           </div>
         </div>
-    </div>
+        </div>
       </nav>
+    <div class="container">
+        <h1 class="title">Okey dokey, artichokey!</h1>
+    </div>
+</header>
+<body>
+    <section class="section">
+    <div class="container">
+        <h1 class="title">Later Alligator</h1>
+        <p class="subtitle">My first website with <strong>Bulma</strong>!</p>
+        <pre>Made in New Paltz</pre>
+    </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">The 5 boroughs of NYC</h1>
+            <ul class = "list">
+                <li>Brooklyn</li>
+                <li>Manhattan</li>
+                <li>Queens</li>
+                <li>Staten Island</li>
+                <li>The Bronx</li>
+            </ul>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Places in tokyo I've visited when I was </h1>
+            <ol class = "list">
+                <li>Shibuya</li>
+                <li>Ginza</li>
+                <li>Shinjuku</li>
+                <li>Harajuku</li>
+                <li>Roppongi</li>
+                <li>Ueno</li>
+                <li>Asakusa</li>
+            </ol>
+        </div>
+    </section>
+    <div class="notification">
+        <button class="delete"></button>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor.
+        <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec
+        nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam,
+        et dictum <a>felis venenatis</a> efficitur.
+      </div>
+    </body>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 My website</p>
+            mailto: <a href="mailto:rezaj1@newpaltz.edu">
+        </div>
 
+    </footer>
 
-        <section class="section">
-            <div class="container">
-                <h1 class="title">
-                    Hello World
-                </h1>
-                <p class="subtitle">
-                    My first website with <strong>Bulma</strong>!
-                </p>
-            </div>
-        </section>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const {createApp, ref} = Vue;
+  const app = createApp({
+    setup() {
+      const notification = ref(true);
+      "This is a primary notification #1";
+      "This is a primary notification #2";
+      "This is a primary notification #3";
+      "This is a primary notification #4";
+      return { notification };
+    }
+  });
+  function closeNotification(index) {
+    notification.value.splice(index,1)
+  }
+  function removeNotification(index) {
+    notification.value.splice(index,1)
+  }
+  const isOpen = ref(false);
+  function toggle() {
+    isOpen.value = !isOpen.value;
+  }
+  const cart = ref([]);
+  function addToCart([name, price]) {
+    cart.value.push([name, price]);
+  }
+  return(notification, closeNotification, isOpen, toggle);
 
-        <section class="section">
-            <div class="container">
-                <div class="columns">
-                    <div class="column">
-
-
-                        <div v-for="(message, index) in notifications" :key="index" class="notification is-success is-light">
-                            <button class="delete" @click="removeNotification(index)"></button>
-                            {{ message }}
-                        </div>
-
-                        
-                    </div>
-                    <div class="column">
-                        <div class="notification is-warning is-light">
-                            This is a warning notification
-                        </div>
-                        <div class="notification is-danger is-light">
-                            This is a danger notification
-                        </div>
-                    </div>
-
-                    <div class="column">
-                      <h2 class="title">Items for sale</h2>
-                      <ul>
-                        <li v-for="item in items" :key="item.name" class="item">
-                          {{ item.name }} - ${{ item.price }}
-                          <button class="button is-primary" @click="addToCart(item)">Add to cart</button>
-                        </li>
-                      </ul>
-                      <h2 class="title">
-                        Your Cart
-                        {{ cart.length }} items 
-                        (${{ cart.reduce((acc, item) => acc + item.price * item.quantity, 0) }})
-                      </h2>
-                        <ul class="box">
-                            <li v-for="item in cart" :key="item.name">
-                                {{ item.name }} - ${{ item.price }} x {{ item.quantity }} = ${{ item.price * item.quantity }}
-                            </li>
-                        </ul>
-                    </div>
-
-
-                </div>
-            </div>
-            <script src="https://unpkg.com/vue@3/dist/vue.global.js" ></script>
-            <script>
-              const { createApp, ref } = Vue;
-
-              const app = createApp({
-                setup() {
-                  const notifications = ref([
-                    'This is a primary notification #1',
-                    'This is a primary notification #2',
-                    'This is a primary notification #3',
-                    'This is a primary notification #4',
-                  ]);
-
-                  function removeNotification(index) {
-                    notifications.value.splice(index, 1);
-                  };
-
-                  const isOpen = ref(false);
-                  function toggleMenu() {
-                    isOpen.value = !isOpen.value;
-                  }
-
-                  const cart = ref([])
-                  const items = [
-                    { name: 'Apple', price: 1.25 },
-                    { name: 'Banana', price: 0.75 },
-                    { name: 'Cherry', price: 2.25 },
-                    { name: 'Date', price: 3.25 },
-                  ];
-                  
-                  function addToCart({ name, price}) {
-                    cart.value.push({name, price, quantity: 1});
-                  }
-
-                  return { notifications, removeNotification, isOpen, toggleMenu, cart, addToCart, items };
-                }
-              });
-
-              app.mount('body');
-
-            </script>
-</body>
+  app.mount('body');
+  
+    </script>
 </html>
