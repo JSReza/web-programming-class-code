@@ -7,7 +7,78 @@
     <link rel="stylesheet" type="text/css" href="default.css">
 </head>
 <body>
-    <h1>in class repo</h1>
+    <h1>vue js practice</h1>
     
 </body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const { ref } = Vue;
+    const header = ref('Stroopwafel');
+    const list = ref([
+        {id: 1, label: 'sahvghjcvd'}, 
+        {id: 2, label: 'sdhjv'}
+        ,{id: 3, label: 'amsterdam centraal'} 
+    
+    ]);
+    const newItem = ref("");
+    const priority = ref(false);
+    const flavor = ref([]);
+</script>
+<template>
+    
+        <h1>{{ header}}</h1>
+    <div>
+        <input type = "text" v-on: keyup.enter = "list.push({id:list.length+1, label:newItem})" v-model = "newItem" placeholder="Enter your name"> 
+        <button @click = "list.push({id:list.length+1, label:newItem})" class = "btn btn-primary">Add </button>
+    </div>
+        Priority:
+    
+    <label>
+        <input type="radio" v-model="priority" value="low">
+        Low
+    </label>
+    <label>
+        <input type="radio" v-model="priority" value="medium">
+        Medium
+    </label>
+    <label>
+        <input type="radio" v-model="priority" value="high">
+        High
+    </label>
+    <select v-model="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+    </select>
+    
+    <label>
+        <input type="checkbox" v-model="priority">
+        Priority
+    </label>
+    <br/>
+    {{priority}}
+        <ol>
+            <li v-for = "({id, label}, index) in list" :key = "list.id">{{list.label}}</li>
+            {{newItem}}
+        </ol>
+       
+        Ice cream flavors:
+        <label>
+            <input type="checkbox" v-model="flavor" value="vanilla">
+            Vanilla
+        </label>
+        <label>
+            <input type="checkbox" v-model="flavor" value="chocolate">
+            Chocolate
+        </label>
+        <label>
+            <input type="checkbox" v-model="flavor" value="strawberry">
+            Strawberry
+        </label>
+        <br/>
+        {{flavor}}
+</template>
+<style>
+
+</style>
 </html>
