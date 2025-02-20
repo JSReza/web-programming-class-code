@@ -1,4 +1,5 @@
 /*
+console.log('shinjuku station is the most used train station in the world');
 console.log('2014 Forest Hills Drive went platinum with no features');
 */
 const server = require('http');
@@ -18,6 +19,8 @@ function square(x) {
 http.listen(PORT, () => {
     console.log('Server is listening on port', PORT);
 });
+
+
 
 
 
