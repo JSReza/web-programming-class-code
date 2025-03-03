@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
   res.send('Hello New Paltz, NY!!!')
 })
 
-const http = server.createServer((req, res) => {
+const http = app.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' })
   res.end('2014 Forest Hills Drive went platinum with no features')
 })
