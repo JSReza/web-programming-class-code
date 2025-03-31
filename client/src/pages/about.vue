@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { useNow } from '@vueuse/core';
-
-
 const { now, pause, resume } = useNow({ controls: true })
 </script>
 

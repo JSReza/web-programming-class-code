@@ -1,0 +1,20 @@
+
+###
+GET https://www.google.com
+###
+GET  https://www.dummyjson.com/products/1
+###
+GET https://localhost:8000/api/v1/products
+###
+POST https://localhost:8000/api/v1/products
+{
+  "name": "Product 1",
+  "price": 100
+}
+###
+PATCH https://localhost:8000/api/v1/products/1
+{
+  "name": "Product 1",
+  "price": 100
+}
+###

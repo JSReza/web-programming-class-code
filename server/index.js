@@ -11,6 +11,7 @@ function square(x) {
 */
 
 const express = require('express')
+const products = require('./controller/products')
 const PORT = 8000
 
 const app = express();
@@ -18,9 +19,7 @@ const app = express();
 app.get('/', (req, res) => {
   res.send('Hello New Paltz, NY!!!')
 })
-
-// Listen on port 8000, IP defaults to
-//
+.use('/api/v1/products', productsController)
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`)
 });
@@ -30,4 +29,16 @@ app.listen(PORT, () => {
 console.log('Hello World!')
 
 
+/*
+ways to send data to the server
+*/  
+// 1. query parameters
+// 2. body
+// 3. path parameters
+// 4. headers
 
+
+/* 
+parts of a url
+
+*/
