@@ -1,39 +1,18 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
-import NavBar from '@/components/NavBar.vue'
-import NotificationList from '@/components/NotificationList.vue';
-import SlidingDrawer from '@/components/SlidingDrawer.vue';
-import ShoppingCart from '@/components/ShoppingCart.vue';
-import { ref } from 'vue';
 
-const isShoppingCartOpen = ref(false)
-
+var bestClass = 'Web Programming'
 </script>
 
 <template>
-  <header>
-    <NavBar v-model:is-shopping-cart-open="isShoppingCartOpen" />
-  </header>
-
-  <div class="container body-container">
-    <NotificationList />
-    <RouterView />
-  </div>
-
-  <SlidingDrawer :isOpen="isShoppingCartOpen">
-    <ShoppingCart />
-  </SlidingDrawer>
+  <main>
+    <h1 class="title">Anonymous Feedback Form</h1>
+    <h2 class="subtitle">Enter your feedback here...</h2>
+    <form action="#" class="form" method="get">
+      <textarea
+                class="textarea"
+                placeholder="Tell me about your favorite class">
+      </textarea>
+      <button class="button is-success" type="submit">Submit</button>
+    </form>
+  </main>
 </template>
-
-<style>
-body {
-  background-color: aliceblue;
-}
-
-.body-container {
-  background-color: white;
-  height: 100vh;
-  padding: 1rem;
-  padding-top: 4em;
-}
-</style>

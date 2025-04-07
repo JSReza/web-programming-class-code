@@ -1,20 +1,39 @@
 
 ###
-GET https://www.google.com
+GET https://google.com/search?q=new+paltz 
+
 ###
-GET  https://www.dummyjson.com/products/1
+GET https://dummyjson.com/products
+
 ###
-GET https://localhost:8000/api/v1/products
+GET https://dummyjson.com/products/1
+
 ###
-POST https://localhost:8000/api/v1/products
+http://localhost:8000/api/v1/products
+
+###
+GET http://localhost:8000/api/v1/products/99
+
+###
+POST http://localhost:8000/api/v1/products
+Content-Type: application/json
+
 {
-  "name": "Product 1",
-  "price": 100
+  "title": "New Product",
+  "description": "This is a new product",
+  "price": 100,
+  "category": "electronics",
+  "image": "https://example.com/image.jpg",
+  "stock": 50
 }
+
 ###
-PATCH https://localhost:8000/api/v1/products/1
+PATCH http://localhost:8000/api/v1/products/1
+Content-Type: application/json
+
 {
-  "name": "Product 1",
-  "price": 100
+  "price": 150
 }
+
 ###
+DELETE http://localhost:8000/api/v1/products/1

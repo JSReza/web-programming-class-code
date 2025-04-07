@@ -4,7 +4,10 @@
   "description": "My name is Jaheen Reza and I’m majoring in computer science. I live in Rockland County but am originally from the Bay Area. I came to New Paltz as a transfer from Rockland Community College. As previously mentioned, I’m majoring in computer science and have taken mainly courses that mainly revolve around Java. When I was in High School and in community college, I took HTML and CSS courses where we were tasked with making our own websites. Additionally, over last summer, I spent most of it learning to code in Python. Also, for classes like Computer Architecture, I had to learn a little bit of C. I would say most of my knowledge is in Java, Python, HTML, CSS and  some C and assembly. I look forward to learning about and using all the technologies and frameworks that are mentioned in brightspace. Although, I have had experience with HTML and CSS, this class will hopefully help me level up my understanding and be able to work on projects in the future that are much greater than my current abilities or knowledge.​​ I also want to have the skills and knowledge needed to be a web developer.  ![IMG_1134jpeg](https://github.com/user-attachments/assets/4e6274b0-112d-461d-bb9b-f1acebf13434)",
   "scripts": {
     "start": "node server/index.js",
-    "dev": "nodemon server/index.js --watch server"
+    "dev": "nodemon server/index.js --watch server",
+    "build:client": "npm run build --prefix client",
+    "build": "npm run build client"
+    
   },
   "repository": {
     "type": "git",
@@ -13,7 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "dayjs": "1.11.13",
-    "express": "4.21.2",
+    "express": "5.1.0",
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
