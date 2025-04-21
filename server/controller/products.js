@@ -1,20 +1,20 @@
-
+const products = require('../models/products')
 const model = require('../models/products')
 const express = require('express')
 const router = express.Router()
 
 router
     .get('/', (async, req, res, next) => {
-
-        model.getAll().then((data) => {
+        const { limit, offset, sort, order } = req.query
+        model.getAll(num(limit), num(offset), sort, order).then((data) => {
             res.send(data)
         }).catch(next)
 
     })
-    .get('/:id', (async, req, res, next) => {
-        const { id } = req.params
-
-        model.get(id).then((data) => {
+    .get('/search/:query', (req, res, next) => {
+        const { query } = req.params
+        const { limit, offset, sort, order } = req.query
+        model.search(query, num(limit), num(offset), sort, order).then((data) => {
             res.send(data)
         }).catch(next)
 
@@ -44,4 +44,8 @@ router
         }).catch(next)
     })
 
-module.exports = router
+    module.exports = router
+ 
+    function num(value) {
+        return value ? +value : undefined
+    }

@@ -10,11 +10,22 @@ function square(x) {
 */
 
 const express = require('express')
-const products = require('./controller/products')
-const PORT = 8000
+const productsController = require('./controller/products')
+const usersController = require('./controller/users')
+require('dotenv').config()
+const PORT = process.env.PORT = 8000
 
 const app = express();
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200)
+  }
+  next()
+})
 
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
@@ -23,7 +34,18 @@ app.get('/', (req, res) => {
   res.send('Hello New Paltz, NY!!!')
 })
 .use('/api/v1/products', productsController)
+.use('/api/v1/users', usersController)
 .use('/', express.static('dist'))
+
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    next()
+}
+)
+app.use(express.json())
 
 app.use(req, res, next, err => {
     console.error(err)
@@ -37,7 +59,9 @@ app
   res.send('Hello New Paltz, NY!!!')
 })
 app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}/`)
+    console.log(`
+      Welcome to the best class at New Paltz - ${process.env.BEST_CLASS}
+      Server running at http://localhost:${PORT}/`)
 });
 
 
