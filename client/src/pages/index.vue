@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type DataListEnvelope } from '../models/dataenvelopes';
+import { type DataListEnvelope } from '../../../server/models/dataenvelopes';
 var bestClass = 'Web Programming'
 import { addToCart } from '@/models/cart';
  import { getAll, type Product } from '@/models/products';

@@ -1,8 +1,5 @@
 import { api } from './session'
-import type { User } from './users'
 import type { DataListEnvelope } from './dataenvelopes'
-
-
 export interface ProductDimensions {
   width: number
   height: number
@@ -10,17 +7,14 @@ export interface ProductDimensions {
 }
 
 export interface ProductReview {
-  id: number
-  product_Id: number
-  user_Id: number
   rating: number
   comment: string
   date: string
-
-  product: Product
-  reviewer: User
+  reviewerName: string
+  reviewerEmail: string
 }
-  export interface ProductMeta {
+
+export interface ProductMeta {
   createdAt: string
   updatedAt: string
 }

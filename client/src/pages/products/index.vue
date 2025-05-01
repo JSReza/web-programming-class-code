@@ -1,9 +1,23 @@
 <script setup lang="ts">
-import { getAll, type Product } from '@/models/products.ts'
-const products = getAll()
+import { addToCart } from '@/models/cart';
+import { type DataListEnvelope } from '@/models/dataenvelopes';
+import { getAll, type Product } from '@/models/products';
+import { ref } from 'vue';
 
-function addToCart(product: Product) {
-    console.log('Add to cart', product)
+const products = ref({} as DataListEnvelope<Product>)
+
+getAll()
+    .then((response) => {
+        products.value = response
+    })
+
+function doAddToCart(product: Product) {
+    addToCart(product)
+}
+interface Ratable{
+    products_reviews:{
+        averageRating: number
+    }
 }
 </script>
 
@@ -21,7 +35,7 @@ function addToCart(product: Product) {
                     <h2>{{ p.title }}</h2>
                     <p>{{ p.description }}</p>
                     <span class="price">${{ p.price }}</span>
-                    <button class="button is-success" @click="addToCart(p)">Add to cart</button>
+                    <button class="button is-success" @click="doAddToCart(p)">Add to cart</button>
                 </div>
             </div>
         </div>
@@ -36,6 +50,9 @@ function addToCart(product: Product) {
 }
 
 .shelf .product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 30%;
     margin: 1em;
     padding: 1em;

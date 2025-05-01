@@ -1,5 +1,5 @@
 <script setup lang = "ts" >
-    import {removeNotification as removeNotificationAction} from '../models/notifications';
+    import {removeNotification as removeNotificationAction} from '../../../server/models/notifications';
     import { ref } from 'vue'
     const notifications = ref([
                     {text: 'This is a primary notification #1', type: 'is-primary'},
